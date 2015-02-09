@@ -1,0 +1,211 @@
+SQL> create table seq_generator(
+  2  keyvalue number(5),
+  3  keytype varchar2(10) primary key);
+
+Table created.
+
+SQL> insert into seq_generator values(0,'MSG');
+
+1 row created.
+
+SQL>  create table userid varchar2(10) primary key,
+  2  .
+SQL> create table reg_user(
+  2  userid varchar2(10) primary key,
+  3  password varchar2(10),
+  4  name varchar2(50),
+  5  gender varchar2(10),
+  6  dob varchar2(10),
+  7  address varchar2(50),
+  8  city varchar2(30),
+  9  state varchar2(20),
+ 10  hint_question varchar2(50),
+ 11  hint_answer varchar2(50),
+ 12  regdate varchar2(10));
+
+Table created.
+
+SQL> drop table reg_user;
+
+Table dropped.
+
+SQL> create table reg_user(
+  2   userid varchar2(30) primary key,
+  3  password varchar2(10),
+  4  name varchar2(50),
+  5  gender varchar2(10),
+  6  dob varchar2(10),
+  7  address varchar2(50),
+  8  city varchar2(30),
+  9  state varchar2(20),
+ 10  hint_question varchar2(50),
+ 11  hint_answer varchar2(50),
+ 12  regdate varchar2(10));
+
+Table created.
+
+SQL>  create table reg_user(
+  2  messageid number(5),
+  3  sender varchar2(30),
+  4  receiver varchar2(30),
+  5  subject varchar2(50),
+  6  message varchar2(500),
+  7  dd number(2),
+  8  mm number(2),
+  9  yy number(4),
+ 10  readstatus varchar2(5));
+ create table reg_user(
+              *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> create table mail_info(
+  2  messageid number(5),
+  3  sender varchar2(30),
+  4  receiver varchar2(30),
+  5  subject varchar2(50),
+  6  message varchar2(500),
+  7  dd number(2),
+  8  mm number(2),
+  9  yy number(4),
+ 10  readstatus varchar2(5));
+
+Table created.
+
+SQL> select * from tab;
+
+TNAME                          TABTYPE CLUSTERID                                                    
+------------------------------ ------- ---------                                                    
+MAIL_INFO                      TABLE                                                                
+REG_USER                       TABLE                                                                
+SEQ_GENERATOR                  TABLE                                                                
+
+SQL> desc reg_user
+ Name                            Null?    Type
+ ------------------------------- -------- ----
+ USERID                          NOT NULL VARCHAR2(30)
+ PASSWORD                                 VARCHAR2(10)
+ NAME                                     VARCHAR2(50)
+ GENDER                                   VARCHAR2(10)
+ DOB                                      VARCHAR2(10)
+ ADDRESS                                  VARCHAR2(50)
+ CITY                                     VARCHAR2(30)
+ STATE                                    VARCHAR2(20)
+ HINT_QUESTION                            VARCHAR2(50)
+ HINT_ANSWER                              VARCHAR2(50)
+ REGDATE                                  VARCHAR2(10)
+
+SQL> alter table DOB   varchar2(15),regdate varchar2(15);
+alter table DOB   varchar2(15),regdate varchar2(15)
+                  *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> alter table reg_user
+  2  modify(DOB  varchar2(15),regdate varchar2(15));
+
+Table altered.
+
+SQL> desc reg_user
+ Name                            Null?    Type
+ ------------------------------- -------- ----
+ USERID                          NOT NULL VARCHAR2(30)
+ PASSWORD                                 VARCHAR2(10)
+ NAME                                     VARCHAR2(50)
+ GENDER                                   VARCHAR2(10)
+ DOB                                      VARCHAR2(15)
+ ADDRESS                                  VARCHAR2(50)
+ CITY                                     VARCHAR2(30)
+ STATE                                    VARCHAR2(20)
+ HINT_QUESTION                            VARCHAR2(50)
+ HINT_ANSWER                              VARCHAR2(50)
+ REGDATE                                  VARCHAR2(15)
+
+SQL> select * from reg_user;
+
+USERID                         PASSWORD   NAME                                                      
+------------------------------ ---------- --------------------------------------------------        
+GENDER     DOB             ADDRESS                                                                  
+---------- --------------- --------------------------------------------------                       
+CITY                           STATE                                                                
+------------------------------ --------------------                                                 
+HINT_QUESTION                                                                                       
+--------------------------------------------------                                                  
+HINT_ANSWER                                        REGDATE                                          
+-------------------------------------------------- ---------------                                  
+amit                           amit       Amit                                                      
+male       jan-01-2007     palashyia                                                                
+Indore                         mp                                                                   
+youe pet's name                                                                                     
+dddd                                               9/4/2007                                         
+                                                                                                    
+
+SQL> select * from reg_user;
+
+USERID                         PASSWORD   NAME                                                      
+------------------------------ ---------- --------------------------------------------------        
+GENDER     DOB             ADDRESS                                                                  
+---------- --------------- --------------------------------------------------                       
+CITY                           STATE                                                                
+------------------------------ --------------------                                                 
+HINT_QUESTION                                                                                       
+--------------------------------------------------                                                  
+HINT_ANSWER                                        REGDATE                                          
+-------------------------------------------------- ---------------                                  
+amit                           sonu       Amit                                                      
+male       jan-01-2007     palashyia                                                                
+Indore                         mp                                                                   
+youe pet's name                                                                                     
+dddd                                               9/4/2007                                         
+                                                                                                    
+mohan                          mohan      Mohan                                                     
+male       jan-01-1999     bhopal                                                                   
+Indore                         mp                                                                   
+youe pet's name                                                                                     
+dddd                                               9/4/2007                                         
+                                                                                                    
+
+SQL> select hint_question,hint answer from reg_user ;
+select hint_question,hint answer from reg_user 
+                     *
+ERROR at line 1:
+ORA-00904: invalid column name 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select hint_question,hint_answer from reg_user 
+SQL> /
+
+HINT_QUESTION                                                                                       
+--------------------------------------------------                                                  
+HINT_ANSWER                                                                                         
+--------------------------------------------------                                                  
+youe pet's name                                                                                     
+dddd                                                                                                
+                                                                                                    
+youe pet's name                                                                                     
+dddd                                                                                                
+                                                                                                    
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select hint_question,hint_answer from reg_user 
+SQL> /
+
+HINT_QUESTION                                                                                       
+--------------------------------------------------                                                  
+HINT_ANSWER                                                                                         
+--------------------------------------------------                                                  
+youe pet's name                                                                                     
+dddd                                                                                                
+                                                                                                    
+youe pet's name                                                                                     
+dddd                                                                                                
+                                                                                                    
+
+SQL> exit

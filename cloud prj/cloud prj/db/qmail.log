@@ -1,0 +1,14 @@
+
+Connected to: Personal Oracle8 Release 8.0.3.0.0 - Production
+With the Partitioning and Objects options
+PL/SQL Release 8.0.3.0.0 - Production
+
+Export file created by EXPORT:V08.00.03 via conventional path
+
+Warning: the objects were exported by QMAIL, not by you
+
+. importing QMAIL's objects into PO8
+. . importing table                    "MAIL_INFO"          6 rows imported
+. . importing table                     "REG_USER"          7 rows imported
+. . importing table                "SEQ_GENERATOR"          1 rows imported
+Import terminated successfully without warnings.
